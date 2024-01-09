@@ -1,4 +1,3 @@
-ranking = ['John', 'Sen', 'Lisa']
-rank = int(input("enter your rank "))
-name = ranking[rank]
-print(name)
+filenames = ['document', 'report', 'presentation']
+for index,filename in enumerate(filenames):
+    print(f"{index}-{filename.capitalize()}.txt")
