@@ -1,5 +1,6 @@
-names = ['john smith', 'jay santi', 'eva kuki']
+usernames = ["john 1990", "alberta1970", "magnola2000"]
 
-capitalized_names = [name.title() for name in names]
+user = [len(username) for username in usernames]
+print(user)
 
-print(capitalized_names)
+
