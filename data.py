@@ -1,5 +1,12 @@
-user_entries = ['10', '19.1', '20']
+while True:
+    with open('coin.txt','r') as file:
+        sides=file.readlines()
 
-liste =[float(item) for item in user_entries]
+    side = input("Throw the coin and enter head or tail here: ?") + "\n"
+    sides.append(side)
 
-print(sum(liste))
+    with open('coin.txt','w') as file:
+        file.writelines(sides)
+    nbr = sides.count('heaad')
+    pr = nbr/len(sides)*100
+    print(f"percentages {pr}%")
