@@ -1,11 +1,5 @@
-member = input("Add a new member: ")
+names = ['john smith', 'jay santi', 'eva kuki']
 
-file = open("members.txt", 'r')
-existing_members = file.readlines()
-file.close()
+capitalized_names = [name.title() for name in names]
 
-existing_members.append(member + "\n")
-
-file = open("members.txt", 'w')
-existing_members = file.writelines(existing_members)
-file.close()
+print(capitalized_names)
