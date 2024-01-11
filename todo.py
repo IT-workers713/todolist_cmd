@@ -1,34 +1,66 @@
-todos = []
-while True :#loop (true is boolean)
-    user_action = input("type add or show or edit or complete or exit\n")
+while True:
+    user_action = input("Type add or show or edit or complete or exit\n")
     user_action = user_action.strip()
-    match user_action:
-        case 'add':
-            todo = input("enter todo \n")
-            todos.append(todo)
-        case 'show':
-            for index,item in enumerate(todos):
-                row=f"{index+1}-{item}"# enumarate pour afficher les numeros
-                print(row)
-        case 'edit':
-            nbr = int(input("enter le nombre de todo pour le modifier"))
-            nbr = nbr-1
-            newtodo = input("enter un nv todo")
-            todos[nbr] = newtodo
-        case 'complete':
-            number=int(input("enter number of todos to complete"))
-            todos.pop(number)
 
-        case 'exit':
+    if user_action.startswith('add'):
+        todo = user_action[4:]
+        with open('todo.txt', 'r') as file:
+            todos = file.readlines()
+        todos.append(todo + "\n")
+        with open('todo.txt', 'w') as file:
+            file.writelines(todos)
 
+    elif user_action.startswith('show'):
+        with open('todo.txt', 'r') as file:
+            todos = file.readlines()
 
-            break
-print("Good Bye !! ")
+        for index, item in enumerate(todos):
+            item = item.strip('\n')
+            row = f"{index + 1}-{item}"
+            print(row)
 
+    elif user_action.startswith('edit'):
+        try:
+            number = int(user_action[5:])
+            print(number)
 
+            number = number - 1
 
+            with open('todo.txt', 'r') as file:
+                todos = file.readlines()
 
+            if 0 <= number < len(todos):
+                nv_todo = input("Enter a new todo: ")
+                todos[number] = nv_todo + "\n"
+                with open('todo.txt', 'w') as file:
+                    file.writelines(todos)
+            else:
+                print("Invalid todo number.")
+        except ValueError:
+            print("Invalid input format. Please enter a valid todo number.")
 
+    elif user_action.startswith('complete'):
+        try:
+            number = int(input("Enter the number of todos to complete: "))
+            with open('todo.txt', "r") as file:
+                todos = file.readlines()
 
+            if 0 < number <= len(todos):
+                index = number - 1
+                todo_to_remove = todos[index].strip("\n")
+                todos.pop(index)
+                with open('todo.txt', "w") as file:
+                    file.writelines(todos)
+                message = f"Todo {todo_to_remove} was removed from the list."
+                print(message)
+            else:
+                print("Invalid todo number.")
+        except ValueError:
+            print("Invalid input format. Please enter a valid todo number.")
 
+    elif user_action.startswith('exit'):
+        break
+    else:
+        print("Command is not valid.")
 
+print("Goodbye!")
