@@ -1,10 +1,8 @@
-password = input("entrez votre mot de passe : \n")
-#t checks if the password length is greater than 7 and returns "Great password there!".
+try:
+    nombre = int(input("enter une valeur totale : \n"))
+    valeur = int(input("enter une valeur : \n"))
 
-if len(password) > 7:
-    print("Great password there!")
-#If the password has 7 or fewer characters, the program returns, "Your password is weak".
-elif len(password)<7:
-    print("Your password is weak")
-elif len(password)==7:
-    print("password to weak you need to enter another password")
+    res  = valeur * 100/nombre
+    print("that is :",res)
+except ValueError:
+    print("il faut que vous entrerez un nombre pas une chaine !!")
