@@ -1,12 +1,8 @@
-while True:
-    with open('coin.txt','r') as file:
-        sides=file.readlines()
+password = input("entrez votre mot de passe : \n")
+#t checks if the password length is greater than 7 and returns "Great password there!".
 
-    side = input("Throw the coin and enter head or tail here: ?") + "\n"
-    sides.append(side)
-
-    with open('coin.txt','w') as file:
-        file.writelines(sides)
-    nbr = sides.count('heaad')
-    pr = nbr/len(sides)*100
-    print(f"percentages {pr}%")
+if len(password) > 7:
+    print("Great password there!")
+#If the password has 7 or fewer characters, the program returns, "Your password is weak".
+elif len(password)<7:
+    print("Your password is weak")
