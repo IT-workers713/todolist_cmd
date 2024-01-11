@@ -6,3 +6,5 @@ try:
     print("that is :",res)
 except ValueError:
     print("il faut que vous entrerez un nombre pas une chaine !!")
+except ZeroDivisionError:
+    print("en peut pas deviser un 0 sur un nombre")
