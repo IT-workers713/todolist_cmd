@@ -1,7 +1,10 @@
-def get_max():
-    grades = [9.6, 9.2, 9.7]
-    x=max(grades)
-    y=min(grades)
-    mesg = f"min {y}, max {x}"
-    return mesg
-print(get_max())
+def convert():
+    liters = int(input("enter leters"))
+    res = liters/1000
+    message = f"{liters} liters == {res} cubic meter"
+    return message
+
+
+print(convert())
+
+
