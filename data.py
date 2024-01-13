@@ -1,7 +1,9 @@
 def water_state(tempature):
-    if tempature <=0:
+    x=0
+    y=100
+    if tempature <=x:
         return "SOLID"
-    elif 0<tempature<100:
+    elif x<tempature<y:
         return "liquid"
     else:
         return "gaz"
